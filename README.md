@@ -1,5 +1,5 @@
 # Jaeger OpenTelemetry .NET
-Two simple ASP .NET Core microservices demonstrate OpenTelemetry .NET.
+Two simple ASP .NET Core microservices to demonstrate OpenTelemetry .NET.
 
 ## Getting Started
 
@@ -8,28 +8,14 @@ The 2 services listen on the following ports:
 - Service A: 5000 (5001 HTTPS)
 - Service B: 6000 (6001 HTTPS)
 
-### Visual Studio
+Both services and an OpenTelemetry (OTEL) Collector, run inside Docker containers.
 
-...
-
-### From the Command Line
+Run with one of the following commands:
 
 ```cmd
-dotnet build
+> start.bat
 ```
 
-Run each service from its own terminal.
-
-```cmd
-cd "src\JaegerOpenTelemetryDotnetExample\JaegerOpenTelemetryDotnetExample.ServiceA\
-
-dotnet run
-```
-
-and
-
-```cmd
-cd "src\JaegerOpenTelemetryDotnetExample\JaegerOpenTelemetryDotnetExample.ServiceB\
-
-dotnet run
+```bash
+$ start.sh
 ```

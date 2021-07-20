@@ -1,0 +1,15 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters:
+  logzio:
+    account_token: "<YOUR_TRACE_TOKEN>"
+    region: "NL"
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logzio]

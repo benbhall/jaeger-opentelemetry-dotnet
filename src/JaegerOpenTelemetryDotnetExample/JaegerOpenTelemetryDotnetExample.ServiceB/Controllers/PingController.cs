@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OpenTelemetry;
+using System.Diagnostics;
 
 namespace JaegerOpenTelemetryDotnetExample.ServiceB.Controllers
 {
@@ -9,7 +11,14 @@ namespace JaegerOpenTelemetryDotnetExample.ServiceB.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return new OkObjectResult("Service B: OK");
+            var infoFromContext = Baggage.Current.GetBaggage("ExampleItem");
+
+            using var source = new ActivitySource("ExampleTracer");
+
+            // A span
+            using var activity = source.StartActivity("In Service B GET method");
+            activity?.SetTag("InfoServiceBReceived", infoFromContext);
+            return Ok();
         }
     }
 }
